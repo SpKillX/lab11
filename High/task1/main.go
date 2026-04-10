@@ -1,0 +1,27 @@
+package main
+
+import (
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+)
+
+func main() {
+	r := gin.Default()
+
+	r.GET("/health", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"status":  "ok",
+			"service": "go-backend",
+		})
+	})
+
+	r.GET("/data", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"message": "Hello from Go inside Docker!",
+			"value":   42,
+		})
+	})
+
+	r.Run("0.0.0.0:8080")
+}
