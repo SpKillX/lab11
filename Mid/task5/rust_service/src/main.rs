@@ -14,3 +14,4 @@ fn main() {
 fn calculate_reservation(id: i32) -> i32 {
     id * 10 + 50
 }
+//test

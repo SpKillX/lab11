@@ -20,3 +20,4 @@ def fetch_from_go():
         }
     except Exception as e:
         return {"error": f"Could not connect to Go: {str(e)}"}
+#test
