@@ -21,20 +21,20 @@ jobs:
       - name: Build and push Go Service
         uses: docker/build-push-action@v5
         with:
-          context: ./Mid/task5
+          context: ./Mid/task5/go_service
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/go-service:latest
 
       - name: Build and push Python Service
         uses: docker/build-push-action@v5
         with:
-          context: ./Mid/task5
+          context: ./Mid/task5/python_service
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/python-service:latest
 
       - name: Build and push Rust Service
         uses: docker/build-push-action@v5
         with:
-          context: ./Mid/task5
+          context: ./Mid/task5/rust_service
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/rust-service:latest
