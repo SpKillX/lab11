@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  go-app:
+    build:
+      context: ./go_service
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+      - "50051:50051"
+    networks:
+      - horeca-network
+
+  python-app:
+    build:
+      context: ./python_service
+    ports:
+      - "8000:8000"
+    depends_on:
+      - go-app
+    environment:
+      - GO_SERVICE_HOST=go-app
+      - GO_SERVICE_PORT=50051
+    networks:
+      - horeca-network
+
+  rust-app:
+    build:
+      context: ./rust_service
+    networks:
+      - horeca-network
+
+networks:
+  horeca-network:
+    driver: bridge
